@@ -95,6 +95,17 @@ details[open] li{animation:up .45s cubic-bezier(.2,.7,.2,1) both;animation-delay
 @supports (animation-timeline:view()){details.cat{animation:up linear both;animation-timeline:view();animation-range:entry 0% entry 45%}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 @media(min-width:700px){.hero .wrap{padding-bottom:96px}}
+
+#apartamentos{padding:34px 0 8px}
+#apartamentos h2{font-size:1.75rem}
+.gal{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;-webkit-overflow-scrolling:touch}
+.gal img{flex:none;width:min(74vw,290px);aspect-ratio:3/4;object-fit:cover;border-radius:20px;scroll-snap-align:center;border:1px solid var(--line);background:var(--surface)}
+.apt{margin-top:14px;padding:20px;border-radius:24px;background:var(--surface);border:1px solid var(--line)}
+.apt h3{font-size:1.5rem}
+.apt .meta{color:var(--muted);font-size:.92rem;margin:8px 0 0}
+.chips{list-style:none;margin:14px 0 4px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{padding:7px 12px;border-radius:999px;background:var(--bg);border:1px solid var(--line);font-size:.85rem;font-weight:600}
+.apt .cta{margin-top:16px;justify-content:flex-start}
 </style>
 </head>
 <body>
@@ -109,7 +120,7 @@ details[open] li{animation:up .45s cubic-bezier(.2,.7,.2,1) both;animation-delay
 <div class="arch"><img alt="Logo de Luxury Angels Tours Cartagena" src="logo.jpg"></div>
 <h1><span>Descubre.</span><span>Explora.</span><span>Disfruta.</span></h1>
 <p>Tours en Cartagena con atención personalizada.</p>
-<div class="cta"><a class="btn" href="#tours">Ver tours</a><a class="btn ghost" href="https://wa.me/573225023624">Hablar con un asesor</a></div>
+<div class="cta"><a class="btn" href="#tours">Ver tours</a><a class="btn ghost" href="#apartamentos">Ver apartamentos</a></div>
 </div>
 <svg class="wave" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30C240 4 420 56 720 32S1200 4 1440 28V56H0Z"/></svg>
 </div>
@@ -119,6 +130,19 @@ details[open] li{animation:up .45s cubic-bezier(.2,.7,.2,1) both;animation-delay
 <p class="hint">Toca una categoría para ver los tours y sus precios.</p>
 <div class="cats" id="cats"></div>
 <p class="steps">Elige un tour, llena el formato y recibe la confirmación por WhatsApp.</p>
+</div></section>
+
+<section id="apartamentos"><div class="wrap">
+<h2>Apartamentos por día</h2>
+<p class="hint">Casa dúplex amoblada en Barranquilla, cerca del estadio Metropolitano.</p>
+<div class="gal" aria-label="Fotos del apartamento"><img src="apto-1.jpg" alt="Sala con sofá, televisor y aire acondicionado" loading="lazy"><img src="apto-2.jpg" alt="Sala y cocina con nevera y barra" loading="lazy"><img src="apto-3.jpg" alt="Habitación con cama y aire acondicionado" loading="lazy"><img src="apto-4.jpg" alt="Habitación con cama doble" loading="lazy"><img src="apto-5.jpg" alt="Balcón con mesa y dos sillas" loading="lazy"><img src="apto-6.jpg" alt="Baño con lavamanos y espejo" loading="lazy"><img src="apto-7.jpg" alt="Ducha con vidrio" loading="lazy"><img src="apto-8.jpg" alt="Sala con dos sillones reclinables" loading="lazy"></div>
+<div class="apt">
+<h3>Dúplex en Los Girasoles</h3>
+<ul class="chips"><li>Aire acondicionado</li><li>Sala con TV</li><li>Cocina con nevera</li><li>Balcón</li><li>Baño con ducha</li><li>Parqueo gratis en la vía</li><li>Recogida en el aeropuerto</li></ul>
+<p class="meta">Check-in 3:00 p. m. · Check-out 11:00 a. m.</p>
+<p class="meta">Consulta tarifa y disponibilidad por WhatsApp. La ubicación exacta se envía al confirmar tu reserva.</p>
+<div class="cta"><a class="btn wa" href="https://wa.me/573225023624?text=Hola%20Luxury%20Angels%2C%20quiero%20reservar%20el%20apartamento%20en%20Barranquilla.">Reservar por WhatsApp</a></div>
+</div>
 </div></section>
 </main>
 
