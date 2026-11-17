@@ -106,6 +106,8 @@ details[open] li{animation:up .45s cubic-bezier(.2,.7,.2,1) both;animation-delay
 .chips{list-style:none;margin:14px 0 4px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .chips li{padding:7px 12px;border-radius:999px;background:var(--bg);border:1px solid var(--line);font-size:.85rem;font-weight:600}
 .apt .cta{margin-top:16px;justify-content:flex-start}
+.m .ok{display:flex;gap:10px;align-items:flex-start;font-weight:600;font-size:.82rem;margin-top:14px;cursor:pointer}
+.m .ok input{width:22px;height:22px;flex:none;padding:0;margin-top:2px}
 </style>
 </head>
 <body>
@@ -135,13 +137,15 @@ details[open] li{animation:up .45s cubic-bezier(.2,.7,.2,1) both;animation-delay
 <section id="apartamentos"><div class="wrap">
 <h2>Apartamentos por día</h2>
 <p class="hint">Casa dúplex amoblada en Barranquilla, cerca del estadio Metropolitano.</p>
-<div class="gal" aria-label="Fotos del apartamento"><img src="apto-1.jpg" alt="Sala con sofá, televisor y aire acondicionado" loading="lazy"><img src="apto-2.jpg" alt="Sala y cocina con nevera y barra" loading="lazy"><img src="apto-3.jpg" alt="Habitación con cama y aire acondicionado" loading="lazy"><img src="apto-4.jpg" alt="Habitación con cama doble" loading="lazy"><img src="apto-5.jpg" alt="Balcón con mesa y dos sillas" loading="lazy"><img src="apto-6.jpg" alt="Baño con lavamanos y espejo" loading="lazy"><img src="apto-7.jpg" alt="Ducha con vidrio" loading="lazy"><img src="apto-8.jpg" alt="Sala con dos sillones reclinables" loading="lazy"></div>
+<div class="gal" aria-label="Fotos del apartamento"><img src="apto1.jpg" alt="Sala con sofá, televisor y aire acondicionado" loading="lazy"><img src="apto2.jpg" alt="Sala y cocina con nevera y barra" loading="lazy"><img src="apto3.jpg" alt="Habitación con cama y aire acondicionado" loading="lazy"><img src="apto4.jpg" alt="Habitación con cama doble" loading="lazy"><img src="apto5.jpg" alt="Balcón con mesa y dos sillas" loading="lazy"><img src="apto6.jpg" alt="Baño con lavamanos y espejo" loading="lazy"><img src="apto7.jpg" alt="Ducha con vidrio" loading="lazy"><img src="apto8.jpg" alt="Sala con dos sillones reclinables" loading="lazy"></div>
 <div class="apt">
 <h3>Dúplex en Los Girasoles</h3>
-<ul class="chips"><li>Aire acondicionado</li><li>Sala con TV</li><li>Cocina con nevera</li><li>Balcón</li><li>Baño con ducha</li><li>Parqueo gratis en la vía</li><li>Recogida en el aeropuerto</li></ul>
+<ul class="chips"><li>Wifi</li><li>Aire acondicionado</li><li>Smart TV</li><li>Cocina completa</li><li>Parqueo gratis en la calle</li><li>Cámara de seguridad y chapa digital</li><li>Se permiten mascotas</li><li>Recogida en el aeropuerto</li></ul>
+<p class="meta"><strong>Hasta 6 huéspedes · 3 habitaciones · 6 camas · 1 baño</strong></p>
 <p class="meta">Check-in 3:00 p. m. · Check-out 11:00 a. m.</p>
 <p class="meta">Consulta tarifa y disponibilidad por WhatsApp. La ubicación exacta se envía al confirmar tu reserva.</p>
-<div class="cta"><a class="btn wa" href="https://wa.me/573225023624?text=Hola%20Luxury%20Angels%2C%20quiero%20reservar%20el%20apartamento%20en%20Barranquilla.">Reservar por WhatsApp</a></div>
+<div class="cta"><a class="btn wa" href="https://wa.me/573225023624?text=Hola%20Luxury%20Angels%2C%20quiero%20reservar%20el%20apartamento%20en%20Barranquilla.">Reservar por WhatsApp</a><a class="btn" href="https://www.airbnb.cl/rooms/1793283848941156691" target="_blank" rel="noopener">Ver y reservar en Airbnb</a></div>
+<p class="meta">Si reservas por Airbnb, el check-in y el envío de documentos se hacen directamente allí.</p>
 </div>
 </div></section>
 </main>
@@ -161,11 +165,13 @@ details[open] li{animation:up .45s cubic-bezier(.2,.7,.2,1) both;animation-delay
 <label for="f3">Identificación</label><input id="f3" inputmode="numeric">
 <label for="f4">Número de pasajeros</label><input id="f4" type="number" min="1" value="2">
 <label for="f5">Número de contacto</label><input id="f5" type="tel" autocomplete="tel">
+<label class="ok" for="f6"><input id="f6" type="checkbox"> Autorizo el tratamiento de mis datos personales para gestionar mi reserva (Ley 1581 de 2012).</label>
 <div class="err" id="err" role="alert"></div>
 <div class="row"><button class="btn ghost" id="x">Cancelar</button><button class="btn wa" id="go">Enviar por WhatsApp</button></div>
 </div></dialog>
 
 <script>
+var REGISTRO_URL="";
 var D=[
 {k:"Playas de Barú",h:38,w:"Un día de playa en Barú, con aguas turquesas y arena blanca.",l:[["Playa Blanca Barú",95],["Playa Tranquila Barú",170],["Playa Blanca + Plancton",195],["Aviario Nacional + Playa Blanca",255]]},
 {k:"Islas del Rosario",h:192,w:"Recorridos en lancha por el archipiélago del Rosario, cerca de Cartagena.",l:[["Islas del Rosario Tradicional",150],["4 Islas Premium",240],["Aventura 4 Destinos",290],["5 Islas VIP",330],["Top Lux Islas del Rosario",370],["Catamarán Islas del Rosario",380],["Top 3 Islas Privadas",490]]},
@@ -178,14 +184,16 @@ d.innerHTML='<summary><div><h3>'+c.k+'</h3><small>'+c.l.length+' planes, desde '
 var ul=d.querySelector("ul");
 c.l.forEach(function(t,i){var li=document.createElement("li");li.style.setProperty("--i",i);
 li.innerHTML='<div><strong>'+t[0]+'</strong><span>Desde '+money(t[1])+' por persona</span></div><button class="btn sm">Reservar</button>';
-li.querySelector("button").onclick=function(){cur=t[0];document.getElementById("dt").textContent=t[0];document.getElementById("err").textContent="";dlg.showModal()};
+li.querySelector("button").onclick=function(){cur=t[0];document.getElementById("dt").textContent=t[0];document.getElementById("err").textContent="";document.getElementById("f6").checked=false;dlg.showModal()};
 ul.appendChild(li)});
 box.appendChild(d)});
 document.getElementById("x").onclick=function(){dlg.close()};
 document.getElementById("go").onclick=function(){
 var v=["f1","f2","f3","f4","f5"].map(function(i){return document.getElementById(i).value.trim()});
 if(v.some(function(x){return!x})){document.getElementById("err").textContent="Completa todos los campos para enviar tu reserva.";return}
+if(!document.getElementById("f6").checked){document.getElementById("err").textContent="Debes autorizar el tratamiento de tus datos para continuar.";return}
 var m="Hola Luxury Angels, quiero reservar: "+cur+"\n\n📅 Fecha: "+v[0]+"\n✅ Titular: "+v[1]+"\n🪪 Identificación: "+v[2]+"\n#️⃣ Pasajeros: "+v[3]+"\n📲 # de contacto: "+v[4];
+if(REGISTRO_URL){try{fetch(REGISTRO_URL,{method:"POST",mode:"no-cors",keepalive:true,headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({tour:cur,fecha:v[0],titular:v[1],id:v[2],pasajeros:v[3],contacto:v[4],autoriza:true})})}catch(x){}}
 window.open("https://wa.me/573225023624?text="+encodeURIComponent(m),"_blank");dlg.close()};
 </script>
 </body>
